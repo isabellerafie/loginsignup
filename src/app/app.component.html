@@ -1,8 +1,8 @@
 <!-- app.component.html -->
 <body>
     <div class="container">
-      <div class="signup-form" #signUpForm id="signUp">
-        <h2>Sign Up</h2>
+        <div class="signup-form" *ngIf="isSignUpVisible" id="signUp">
+            <h2>Sign Up</h2>
         <form>
           <div class="form-group">
             <div class="radio-group" style="margin-left: 180px;">
@@ -14,57 +14,57 @@
           </div>
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name">
+            <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email">
+            <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
           </div>
           <div class="form-group">
             <label for="phone">Phone Number:</label>
-            <select id="phone-code">
+            <select id="phone-code" name="phone-code" required>
               <!-- Options for phone codes -->
             </select>
-            <input type="text" id="phone">
+            <input type="text" id="phone" name="phone" required>
           </div>
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password">
+            <input type="password" id="password" name="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
           </div>
           <div class="form-group">
             <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password">
+            <input type="password" id="confirm-password" name="confirm-password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
           </div>
           <div class="form-group">
             <label for="license">Upload License:</label>
-            <input type="file" accept="image/*" id="license">
+            <input type="file" accept="image/*" id="license" name="license" required>
           </div>
           <div class="form-group">
             <label for="logo">Upload Logo:</label>
-            <input type="file" accept="image/*" id="logo">
+            <input type="file" accept="image/*" id="logo" name="logo" required>
           </div>
           <button type="submit">Sign Up</button>
-            <p>Already have an account? <a href="#" id="loginLink">Log in</a></p>
+          <p>Already have an account? <a href="#" (click)="showLoginForm()">Log in</a></p>
         </form>
       </div>
-      <div class="login-form" #loginForm id="login">
+      <div class="login-form" *ngIf="!isSignUpVisible" id="login">
         <h2>Login</h2>
         <form>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email">
+            <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
           </div>
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password">
+            <input type="password" id="password" name="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
           </div>
           <button type="submit">Login</button>
-          <p>Don't have an account? <a href="#" id="signUpLink">Sign up</a></p>
+          <p>Don't have an account? <a href="#" (click)="showSignUpForm()">Sign up</a></p>        
         </form>
       </div>
-      <div #overlay id="overlay">
+      <div id="overlay" [style.left]="overlayLeft"></div>
 
       </div>
-    </div>
+    
     
 </body>
