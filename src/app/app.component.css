@@ -1,0 +1,138 @@
+/* app.component.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: linear-gradient(90deg, #bdeb40 0%, #f70ed0 46%, #17eb28 100%);
+    background-size: cover;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    height: 99vh; /* Ensure the container covers the full viewport height */
+    margin: 0;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Prevent content from overflowing */
+  }
+  
+  .signup-form,
+  .login-form {
+    padding: 20px;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.219);
+    border-radius: 25px;
+    margin: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"]
+  {
+    width: calc(100% - 10px);
+    margin-top: 5px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid dodgerblue;
+
+  }
+  
+  .form-group input[type="file"]{
+    color: red;
+  }
+
+  .form-group select {
+    width: calc(100% - 10px);
+    background-color: transparent;
+    border-color: dodgerblue;
+    border-style:dotted;
+    margin-top: 10px;
+  }
+  
+  .form-group .radio-group {
+    display: flex;
+  }
+  
+  .form-group .radio-group label {
+    margin-right: 10px;
+  }
+  
+  .button-container {
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 40px;
+    background-color: #d4a930;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 250px;
+
+  }
+  
+  button:hover {
+    background-color: #fdba01;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  p {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #157fbe;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.5;
+  }
+  
+  #overlay {
+    background-image: url("/assets/pngtree-blue-purple-simple-gradient-background-image_760572.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    width: 650px; /* Adjust width to match the width of the signup form */
+    height: 650px; /* Adjust height to match the height of the signup form */
+    z-index: 2; /* Ensure the overlay is on top of the signup form */
+    border-radius: 25px;
+  }
+  
+  .signup-form {
+    position: relative; /* Ensure the signup form is positioned relative to the container */
+    z-index: 1;
+  }
+  
