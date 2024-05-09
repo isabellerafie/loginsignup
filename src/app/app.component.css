@@ -6,9 +6,22 @@ body, html {
   }
   
   body {
-    background-image: linear-gradient(90deg, hsl(194, 80%, 61%) 0%, #c966c0 46%, #cfafc7 100%);
+    background-image: linear-gradient(90deg, #F4F4F4 0%, #D8D8D8 30%, #B3B3B3 50%, #878787 70%, #4A4A4A 100%);
     background-size: cover;
     font-family: Arial, sans-serif;
+  }
+  
+  #overlay {
+    background-image: url("/assets/pngtree-original-hand-painted-gradient-dark-blue-watercolor-background-design-dream-picture-image_1658115\ \(1\).jpg");
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 600px; 
+    height: 650px; 
+    z-index: 2; /* Ensure the overlay is on top of the signup form */
+    border-radius: 25px;
   }
   
   .container {
@@ -29,37 +42,55 @@ body, html {
   }
   
   .form-group {
-    margin-bottom: 15px;
+    display: flex; /* Change display to flex */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 15px;  
+    color: dodgerblue;
+    font-size: large;
   }
   
   .form-group label {
-    display: block;
+    width: 150px; 
+    margin-bottom: 5px; 
+    
   }
   
+  .phone-inputs {
+    display: flex;
+    flex: 1; 
+  }
+  
+  .phone-inputs select {
+    width: calc(25% - 5px); 
+  }
+  
+ .form-group select {
+  width: calc(25% - 5px); 
+  background-color: transparent;
+  border-color: dodgerblue;
+  border-style: dotted;
+  margin-top: 10px;
+}
+
   .form-group input[type="text"],
   .form-group input[type="email"],
-  .form-group input[type="password"]
+  .form-group input[type="password"],
+  .form-group input[type="tel"]
   {
-    width: calc(100% - 10px);
+    width: calc(90% - 90px); 
     margin-top: 5px;
     outline: none;
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid dodgerblue;
-
+    border: 2px solid dodgerblue;
+    flex: 1; 
   }
+  
   
   .form-group input[type="file"]{
     color: red;
   }
 
-  .form-group select {
-    width: calc(100% - 10px);
-    background-color: transparent;
-    border-color: dodgerblue;
-    border-style:dotted;
-    margin-top: 10px;
-  }
   
   .form-group .radio-group {
     display: flex;
@@ -117,19 +148,7 @@ body, html {
     opacity: 0.5;
   }
   
-  #overlay {
-    background-image: url("/assets/pngtree-blue-purple-simple-gradient-background-image_760572.jpg");
-    background-size: cover;
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    width: 600px; 
-    height: 650px; 
-    z-index: 2; /* Ensure the overlay is on top of the signup form */
-    border-radius: 25px;
-  }
-  
+ 
   .signup-form {
     position: relative;
     z-index: 1;
@@ -138,6 +157,27 @@ body, html {
   
   .login-form {
     position: absolute;
-    right: 5%; /* Position the login form to the right */
+    right: 5%; 
     width: 600px;
+}
+
+span{
+  color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Style the invalid inputs */
+input:invalid {
+  border-color: red;
+  box-shadow: 0 0 3px red;
+}
+
+/* Style the valid inputs */
+input:valid {
+  border-color: green;
 }
