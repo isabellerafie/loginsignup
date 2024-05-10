@@ -76,24 +76,32 @@
                 </div>
             </div>
 
-            <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" formControlName="password" [required]="!(isRestaurantSelected || isOrganizationSelected)"
-                [pattern]="!(isRestaurantSelected || isOrganizationSelected) ? '^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$' : ''">
-                <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched" class="error-message">
-                    Password must contain at least 1 letter, 1 number, and be at least 8 characters long.
-                </div>
-            </div>
+           <!-- Password -->
+<div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" formControlName="password" [required]="!(isRestaurantSelected || isOrganizationSelected)"
+    [pattern]="!(isRestaurantSelected || isOrganizationSelected) ? '^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$' : ''">
+    <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched && signUpForm.get('password')?.dirty && !signUpForm.get('password')?.value" class="error-message">
+        Please enter your password.
+    </div>
 
-            <!-- Confirm Password -->
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" formControlName="confirmPassword" required>
-                <div *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched" class="error-message">
-                    Confirm password is required.
-                </div>
-            </div>
+</div><div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched && signUpForm.get('password')?.dirty && signUpForm.get('password')?.value && signUpForm.get('password')?.errors?.['pattern']" class="error-message">
+    Password must contain at least 1 letter, 1 number, and be at least 8 characters long.
+</div>
+
+<!-- Confirm Password -->
+<div class="form-group">
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password" formControlName="confirmPassword" required>
+    <div *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.dirty && !signUpForm.get('confirmPassword')?.value" class="error-message">
+        Please confirm your password.
+    </div>
+    <div *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.dirty && signUpForm.get('confirmPassword')?.value !== signUpForm.get('password')?.value" class="error-message">
+        Passwords should match.
+    </div>
+</div>
+
+
 
             <!-- Upload License -->
             <div class="form-group">
