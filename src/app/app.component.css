@@ -42,8 +42,8 @@ body, html {
   }
   
   .form-group {
-    display: flex; /* Change display to flex */
-    align-items: center; /* Align items vertically */
+    display: flex; 
+    align-items: center; 
     margin-bottom: 15px;  
     color: dodgerblue;
     font-size: large;
@@ -180,4 +180,10 @@ input:invalid {
 /* Style the valid inputs */
 input:valid {
   border-color: green;
+}
+
+  .preview-image {
+    max-width: 100px; 
+  
+    max-height: 100px; 
 }

@@ -13,7 +13,10 @@ export class AppComponent {
   isRestaurantSelected: boolean = false;
   isOrganizationSelected: boolean = false;
   overlayLeft: string = '77%';
-  signUpForm: FormGroup; // Declare the property
+  signUpForm: FormGroup; 
+  licenseImageSrc: string | ArrayBuffer | null = null; 
+  logoSrc: string | ArrayBuffer | null = null; 
+
 
   constructor(private formBuilder: FormBuilder) {
     this.signUpForm = this.formBuilder.group({
@@ -75,5 +78,27 @@ export class AppComponent {
     }
   }
 
-  
+  previewImage(event: any, imageId: string) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            (this as any)[imageId + 'Src'] = reader.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+previewLogo(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+          this.logoSrc = reader.result;
+      };
+      reader.readAsDataURL(file);
+  }
+}
+
+
+
 }

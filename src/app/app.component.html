@@ -104,22 +104,27 @@
 
 
             <!-- Upload License -->
-            <div class="form-group">
-                <label for="license">Upload License:</label>
-                <input type="file" accept="image/*" id="license" name="license" formControlName="license" required>
-                <div *ngIf="signUpForm.get('license')?.invalid && signUpForm.get('license')?.touched" class="error-message">
-                    License file is required.
-                </div>
-            </div>
+<div class="form-group">
+    <label for="license">Upload License:</label>
+    <input type="file" accept="image/*" id="license" name="license" formControlName="license" (change)="previewImage($event, 'licenseImage')" required>
+    <img id="licenseImage" class="preview-image" [src]="licenseImageSrc" alt="License Preview" *ngIf="licenseImageSrc">
+    <div *ngIf="signUpForm.get('license')?.invalid && signUpForm.get('license')?.touched" class="error-message">
+        License file is required.
+    </div>
+</div>
 
-            <!-- Upload Logo -->
-            <div class="form-group">
-                <label for="logo">Upload Logo:</label>
-                <input type="file" accept="image/*" id="logo" name="logo" formControlName="logo" required>
-                <div *ngIf="signUpForm.get('logo')?.invalid && signUpForm.get('logo')?.touched" class="error-message">
-                    Logo file is required.
-                </div>
-            </div>
+<!-- Upload Logo -->
+<div class="form-group">
+    <label for="logo">Upload Logo:</label>
+    <input type="file" accept="image/*" id="logo" name="logo" formControlName="logo" required (change)="previewLogo($event)">
+    <div *ngIf="signUpForm.get('logo')?.invalid && signUpForm.get('logo')?.touched" class="error-message">
+        Logo file is required.
+    </div>
+    <div *ngIf="logoSrc" class="logo-preview">
+        <img [src]="logoSrc" alt="Logo Preview" class="preview-image">
+    </div>
+</div>
+
 
           <button type="submit">Sign Up</button>
           <p>Already have an account? <a href="#" (click)="showLoginForm()">Log in</a></p>
